@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METEO // Global Atmosphere Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="ambient-glow"></div>
+    <canvas id="rain-canvas"></canvas>
+
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand-zone">
+                <div class="logo-mark"></div>
+                <div class="brand-details">
+                    <h2>METEO™</h2>
+                    <p>Atmospheric Engine Core</p>
+                </div>
+            </div>
+
+            <!-- Integrated Search Node -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="matrix-search" placeholder="Search matrix stations..." autocomplete="off">
+                </div>
+            </div>
+
+            <div class="menu-scroll-area">
+                <div class="menu-section-wrapper" id="section-rain">
+                    <div class="menu-section-label">Rain Environments (<span id="count-rain">0</span>)</div>
+                    <nav class="location-menu" id="rain-menu"></nav>
+                </div>
+
+                <div class="menu-section-wrapper" id="section-snow">
+                    <div class="menu-section-label">Snow Simulations (<span id="count-snow">0</span>)</div>
+                    <nav class="location-menu" id="snow-menu"></nav>
+                </div>
+                
+                <div id="search-empty-state" class="empty-state-hidden">No atmospheric coordinate matches found</div>
+            </div>
+        </aside>
+
+        <main class="dashboard-viewport">
+            <header class="dashboard-header">
+                <div class="header-status">
+                    <span class="pulse-indicator"></span>
+                    <span id="system-status-text">Dynamic Particle Pipeline Active</span>
+                </div>
+                <div id="clock-display">00:00:00</div>
+            </header>
+
+            <div class="dashboard-content">
+                <section class="main-readout">
+                    <div class="readout-grid-wrapper">
+                        <div class="readout-left">
+                            <div class="metric-row-top">
+                                <span class="location-geo-tag" id="geo-tag">Station Alpha</span>
+                                <span class="live-pill">LIVE RENDER</span>
+                            </div>
+                            
+                            <div class="display-flex-center">
+                                <h1 class="core-temp" id="core-temp">--<span>°C</span></h1>
+                                <div class="condition-block">
+                                    <h2 class="condition-title" id="condition-title">Loading...</h2>
+                                    <p class="condition-desc" id="condition-desc">Synchronizing simulation grid.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="telemetry-visual-box">
+                            <div class="visual-panel">
+                                <span class="visual-label">RADAR GEOMETRY</span>
+                                <iframe id="map-viewport" src="about:blank" style="width:100%; height:100%; border:0; opacity:0; transition:opacity 0.8s ease;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="telemetry-grid">
+                    <div class="telemetry-card">
+                        <span class="card-label">Velocity / Drift Vector</span>
+                        <div class="card-value" id="val-wind">0.0 km/h</div>
+                        <div class="mini-bar-container"><div class="mini-bar" id="bar-wind" style="width: 0%"></div></div>
+                    </div>
+                    <div class="telemetry-card">
+                        <span class="card-label">Active Matrix Density</span>
+                        <div class="card-value" id="val-density">0 particles</div>
+                        <div class="mini-bar-container"><div class="mini-bar" id="bar-density" style="width: 0%"></div></div>
+                    </div>
+                    <div class="telemetry-card">
+                        <span class="card-label">Acoustic Base Matrix</span>
+                        <div class="card-value" id="val-audio">0 Hz</div>
+                        <div class="mini-bar-container"><div class="mini-bar" id="bar-audio" style="width: 0%"></div></div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="dashboard-footer">
+                <button class="audio-control-node muted" id="audio-trigger">
+                    <div class="audio-wave-bars">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <span id="audio-node-label">Activate Audio Environment</span>
+                </button>
+                <div class="security-clearance">MATRIX SIMULATION // v5.0</div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
